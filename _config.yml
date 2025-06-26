@@ -1,0 +1,35 @@
+title: The Jordan Lab
+description: Research Repository Catalog - Metabolic Regulation & Post-Transcriptional Control
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-relative-links
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Site settings
+url: "https://the-jordan-lab.github.io"
+baseurl: ""
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Research Projects
+    url: /#research-projects
+  - title: Resources
+    url: /#resources--documentation
+  - title: Team
+    url: https://github.com/orgs/the-jordan-lab/people
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name
+
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project" 
