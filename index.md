@@ -119,6 +119,7 @@ The Jordan Lab investigates the molecular mechanisms underlying metabolic regula
 - [**RT-qPCR ΔΔCt Template**](https://github.com/the-jordan-lab/templates/tree/main/for-workflow-agent) - Standardized qPCR analysis
 - [**YBX1 Conservation Analysis**](https://github.com/the-jordan-lab/proj001-Ybx1_in_WAT/tree/main/jj002-ybx1-conservation-analysis-main) - Cross-species evolutionary analysis
 
+---
 
 
 © 2025 The Jordan Lab | Florida State University
