@@ -13,11 +13,10 @@ layout: default
 ## About Our Research
 
 The Jordan Lab investigates the molecular mechanisms underlying metabolic regulation, with a particular focus on:
-- Post-transcriptional gene regulation by RNA-binding proteins
+- Post-transcriptional gene regulation
 - Adipose tissue development and maintenance
 - Hepatic metabolism and lipid homeostasis  
 - Chromatin remodeling in metabolic disease
-- Development of innovative molecular tools and model systems
 
 ---
 
@@ -55,7 +54,7 @@ The Jordan Lab investigates the molecular mechanisms underlying metabolic regula
 
 ## Resources & Documentation
 
-### 📖 Lab Protocols & SOPs
+### Lab Protocols & SOPs
 - [**Protocols Repository**](https://github.com/the-jordan-lab/protocols) - Standard operating procedures for all lab techniques
   - Cell culture protocols
   - Molecular biology techniques
@@ -122,8 +121,5 @@ The Jordan Lab investigates the molecular mechanisms underlying metabolic regula
 
 
 
-<footer class="site-footer">
-  <p>© 2025 The Jordan Lab | Florida State University</p>
-  <p>This is an internal resource for lab members.
-     For external inquiries, please contact the PI.</p>
-</footer>
+© 2025 The Jordan Lab | Florida State University
+This is an internal resource for lab members. For access and other external inquiries, please contact the PI (jmjordan@fsu.edu)
