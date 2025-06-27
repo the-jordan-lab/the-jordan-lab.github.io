@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "The Jordan Lab"
-date: 2025-06-26
+date: 2025-06-27
 tags: [github-pages, website, dark-mode]
 ---
 
@@ -13,7 +13,8 @@ tags: [github-pages, website, dark-mode]
 }
 body{margin:0;background:var(--bg);color:var(--fg);}
 a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
-hr.divider{border:none;border-top:1.5px solid var(--border);margin:2.5rem auto;width:90%;}
+hr.divider{border:none;border-top:1.5px solid var(--border);margin:2.5rem auto;
+           width:90%;}
 .hero{padding:4rem 1rem 2.5rem;padding-top:calc(4rem+52px);text-align:center;}
 .hero h1{font-size:3.2rem;font-weight:700;letter-spacing:-2px;margin:0 0 .8rem;}
 .hero p{font-size:1.25rem;color:var(--muted);max-width:600px;margin:0 auto;}
@@ -21,14 +22,16 @@ hr.divider{border:none;border-top:1.5px solid var(--border);margin:2.5rem auto;w
 .pill{background:var(--pill-bg);border:1px solid var(--pill-border);
       border-radius:2em;padding:.65rem 1.4rem;font-size:1rem;}
 .container{width:90%;max-width:1100px;margin:0 auto;}
-.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.4rem;}
-.card{background:var(--card);border-radius:9px;padding:1.2rem 1rem;
-      box-shadow:0 1px 4px rgba(0,0,0,.06);}
-.card-title{font-weight:600;font-size:1.05rem;margin:0 0 .3rem;}
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+           gap:1.4rem;}
+.card{background:var(--card);border-radius:9px;padding:1.4rem 1.2rem;
+      box-shadow:0 2px 6px rgba(0,0,0,.08);transition:transform .15s;}
+.card:hover{transform:translateY(-3px);}
+.card.proj{border-left:4px solid var(--accent);transform:scale(1.05);}
+.card-title{font-weight:600;font-size:1.1rem;margin:0 0 .35rem;}
 .card-desc{font-size:.99rem;color:var(--muted);}
-details summary{cursor:pointer;font-size:1.04rem;color:var(--accent);}
-footer{border-top:1px solid #24272e;text-align:center;font-size:.98rem;padding:1.2rem 0;
-       margin-top:3.5rem;color:#65696f;}
+footer{border-top:1px solid #24272e;text-align:center;font-size:.98rem;
+       padding:1.2rem 0;margin-top:3.5rem;color:#65696f;}
 @media(max-width:600px){.hero h1{font-size:2.4rem;}}
 </style>
 
@@ -40,9 +43,12 @@ footer{border-top:1px solid #24272e;text-align:center;font-size:.98rem;padding:1
 
 <div class="pills">
   <a class="pill" href="https://github.com/the-jordan-lab">🏠 Home</a>
-  <a class="pill" href="https://github.com/orgs/the-jordan-lab/repositories">📊 Repositories</a>
-  <a class="pill" href="https://github.com/orgs/the-jordan-lab/people">👥 Members</a>
-  <a class="pill" href="https://github.com/orgs/the-jordan-lab/teams">👨‍👩‍👧‍👦 Teams</a>
+  <a class="pill"
+     href="https://github.com/orgs/the-jordan-lab/repositories">📊 Repositories</a>
+  <a class="pill"
+     href="https://github.com/orgs/the-jordan-lab/people">👥 Members</a>
+  <a class="pill"
+     href="https://github.com/orgs/the-jordan-lab/teams">👨‍👩‍👧‍👦 Teams</a>
 </div>
 
 <hr class="divider">
@@ -58,7 +64,7 @@ footer{border-top:1px solid #24272e;text-align:center;font-size:.98rem;padding:1
   </ul>
 </div>
 
-<!-- Projects fetched dynamically -->
+<!-- Projects -->
 <div class="container" style="margin-bottom:3rem;">
   <h2>Research Projects</h2>
   <div id="projects" class="grid-cards">
@@ -66,38 +72,49 @@ footer{border-top:1px solid #24272e;text-align:center;font-size:.98rem;padding:1
   </div>
 </div>
 
-<!-- Resources / Lab Management / Example Analyses blocks unchanged -->
-<!-- … you can paste the earlier static sections here … -->
-
 <footer>
   © 2025 The Jordan Lab · Florida State University<br>
-  <span style="font-size:.92rem;">Internal resource for lab members. For external
-    inquiries contact <a href="mailto:jmjordan@fsu.edu">jmjordan@fsu.edu</a>.</span>
+  <span style="font-size:.92rem;">Internal resource for lab members. For
+    external inquiries contact
+    <a href="mailto:jmjordan@fsu.edu">jmjordan@fsu.edu</a>.</span>
 </footer>
 
 <script>
 (async()=>{
-  const org = 'the-jordan-lab';
-  const url = `https://api.github.com/orgs/${org}/repos?per_page=100&type=public`;
-  /* If you need private repos too, create a classic PAT with repo scope and
-     add: headers:{Authorization:`token YOUR_TOKEN`} */
+  const org='the-jordan-lab';
+  const url=`https://api.github.com/orgs/${org}/repos?per_page=100&type=public`;
   try{
-    const res = await fetch(url); const repos = await res.json();
-    repos.sort((a,b)=>a.name.localeCompare(b.name));
-    const wrap = document.getElementById('projects'); wrap.innerHTML='';
+    const res=await fetch(url);
+    const repos=await res.json();
+
+    /* proj* bubble to top, both buckets alpha-sorted */
+    repos.sort((a,b)=>{
+      const pa=/^proj/i.test(a.name),pb=/^proj/i.test(b.name);
+      if(pa!==pb) return pb-pa;            // proj* before others
+      return a.name.localeCompare(b.name); // alpha inside buckets
+    });
+
+    const wrap=document.getElementById('projects');
+    wrap.innerHTML='';
     repos.forEach(r=>{
-      const card=document.createElement('div'); card.className='card';
+      const isProj=/^proj/i.test(r.name);
+      const card=document.createElement('div');
+      card.className='card'+(isProj?' proj':'');
       card.innerHTML=`
-        <a class="card-title" href="${r.html_url}">${r.name.replace(/-/g,' ')}</a>
+        <a class="card-title" href="${r.html_url}">
+          ${r.name.replace(/-/g,' ')}
+        </a>
         <div class="card-desc">${r.description||'&nbsp;'}</div>`;
       wrap.appendChild(card);
     });
-    if(!repos.length) wrap.innerHTML='<p style="color:var(--muted);">No public repos found.</p>';
+    if(!repos.length){
+      wrap.innerHTML=
+        '<p style="color:var(--muted);">No public repos found.</p>';
+    }
   }catch(e){
-    document.getElementById('projects').innerHTML =
+    document.getElementById('projects').innerHTML=
       '<p style="color:#e06666;">Error loading repos.</p>';
     console.error(e);
   }
 })();
 </script>
-
