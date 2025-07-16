@@ -1,156 +1,163 @@
----
-layout: default
-title: "The Jordan Lab"
-date: 2025-06-27
-tags: [github-pages, website, dark-mode]
----
+<!-- index.html or index.md (with HTML passthrough) -->
 
-<style>
-:root{
-  --bg:#181c20;--fg:#f6f6f6;--muted:#b8bcc2;--accent:#39e0a0;
-  --card:#22262b;--border:#3a4049;--pill-bg:#23272f;--pill-border:#24292f;
-  font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.6;
-}
-body{margin:0;background:var(--bg);color:var(--fg);}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-hr.divider{border:none;border-top:1.5px solid var(--border);
-           margin:2.5rem auto;width:90%;}
-.hero{padding:4rem 1rem 2.5rem;
-      padding-top:calc(4rem+52px);text-align:center;}
-.hero h1{font-size:3.2rem;font-weight:700;letter-spacing:-2px;margin:0 0 .8rem;}
-.hero p{font-size:1.25rem;color:var(--muted);max-width:600px;margin:0 auto;}
-.pills{display:flex;flex-wrap:wrap;gap:.7em;justify-content:center;
-       margin-bottom:3rem;}
-.pill{background:var(--pill-bg);border:1px solid var(--pill-border);
-      border-radius:2em;padding:.65rem 1.4rem;font-size:1rem;}
-.container{width:90%;max-width:1100px;margin:0 auto;}
-.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,
-             minmax(260px,1fr));gap:1.4rem;}
-.card{background:var(--card);border-radius:9px;padding:1.4rem 1.2rem;
-      box-shadow:0 2px 6px rgba(0,0,0,.08);transition:transform .15s;}
-.card:hover{transform:translateY(-3px);}
-.card.proj{border-left:4px solid var(--accent);transform:scale(1.05);}
-.card-title{font-weight:600;font-size:1.1rem;margin:0 0 .35rem;}
-.card-desc{font-size:.99rem;color:var(--muted);}
-footer{border-top:1px solid #24272e;text-align:center;font-size:.98rem;
-       padding:1.2rem 0;margin-top:3.5rem;color:#65696f;}
-@media(max-width:600px){.hero h1{font-size:2.4rem;}}
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Jordan Lab · GitHub Repos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #181c20;
+      --fg: #f6f6f6;
+      --muted: #b8bcc2;
+      --accent: #39e0a0;
+      --card: #22262b;
+      --border: #3a4049;
+      --shadow: 0 2px 8px rgba(0,0,0,0.10);
+      --link: #39e0a0;
+      --link-hover: #2bbd85;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f6f6;
+        --fg: #181c20;
+        --muted: #444;
+        --accent: #1e8e5f;
+        --card: #fff;
+        --border: #e0e0e0;
+        --shadow: 0 2px 8px rgba(0,0,0,0.04);
+        --link: #1e8e5f;
+        --link-hover: #39e0a0;
+      }
+    }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 2.5rem 1rem 1.5rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0 0 0.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin: 0;
+    }
+    main {
+      width: 95%;
+      max-width: 1100px;
+      margin: 0 auto 2.5rem;
+    }
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .repo-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1.2rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.12s;
+    }
+    .repo-card:hover {
+      transform: translateY(-3px) scale(1.02);
+      border-color: var(--accent);
+    }
+    .repo-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--link);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .repo-title:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+    .repo-desc {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 0.2rem;
+      min-height: 2.2em;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.98rem;
+      padding: 1.5rem 0 0.5rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6rem; }
+      .repo-grid { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Jordan Lab</h1>
+    <p>Advancing our understanding of metabolic regulation, post-transcriptional control, and adipose tissue biology</p>
+  </header>
+  <main>
+    <section>
+      <h2 style="font-size:1.3rem;font-weight:500;margin-bottom:0.5rem;">Public Repositories</h2>
+      <div id="repo-list" class="repo-grid" aria-live="polite">
+        <div style="color:var(--muted);font-size:1.1rem;">Loading repositories…</div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 The Jordan Lab · Florida State University &mdash; <a href="mailto:jmjordan@fsu.edu" style="color:var(--link);">Contact</a>
+  </footer>
+  <script>
+    (async () => {
+      const org = 'the-jordan-lab';
+      const exclude = ['the-jordan-lab.github.io']; // Exclude the website repo
+      const api = `https://api.github.com/orgs/${org}/repos?per_page=100&type=public`;
+      const container = document.getElementById('repo-list');
+      try {
+        const res = await fetch(api);
+        if (!res.ok) throw new Error('GitHub API error');
+        let repos = await res.json();
+        repos = repos.filter(r => !exclude.includes(r.name));
+        repos.sort((a, b) => a.name.localeCompare(b.name));
+        if (repos.length === 0) {
+          container.innerHTML = '<div style="color:var(--muted);font-size:1.1rem;">No repositories found.</div>';
+          return;
+        }
+        container.innerHTML = '';
+        for (const repo of repos) {
+          const card = document.createElement('div');
+          card.className = 'repo-card';
+          card.innerHTML = `
+            <a class="repo-title" href="${repo.html_url}" target="_blank" rel="noopener">${repo.name.replace(/-/g, ' ')}</a>
+            <div class="repo-desc">${repo.description ? repo.description : '<span style="color:var(--border);">No description</span>'}</div>
+          `;
+          container.appendChild(card);
+        }
+      } catch (e) {
+        container.innerHTML = '<div style="color:#e57373;">Error loading repositories.</div>';
+      }
+    })();
+  </script>
+</body>
+</html>
 
-<div class="hero">
-  <h1>The Jordan Group</h1>
-  <p>Advancing our understanding of metabolic regulation,
-     post-transcriptional control, and adipose tissue biology</p>
-</div>
-
-<div class="pills">
-  <a class="pill" href="https://github.com/the-jordan-lab">🏠 Home</a>
-  <a class="pill"
-     href="https://github.com/orgs/the-jordan-lab/repositories">📊 Repositories</a>
-  <a class="pill"
-     href="https://github.com/orgs/the-jordan-lab/people">👥 Members</a>
-  <a class="pill"
-     href="https://github.com/orgs/the-jordan-lab/teams">👨‍👩‍👧‍👦 Teams</a>
-</div>
-
-<hr class="divider">
-
-<!-- About -->
-<div class="container" style="max-width:680px;margin-bottom:2.5rem;">
-  <h2>About Our Research</h2>
-  <ul>
-    <li>Post-transcriptional gene regulation</li>
-    <li>Adipose tissue development and maintenance</li>
-    <li>Hepatic metabolism and lipid homeostasis</li>
-    <li>Chromatin remodeling in metabolic disease</li>
-  </ul>
-</div>
-
-<!-- ===== Repo Sections ===== -->
-<div class="container" style="margin-bottom:3rem;">
-  <h2>Group Repos</h2>
-  <div id="group" class="grid-cards">
-    <p style="color:var(--muted);">Loading…</p>
-  </div>
-
-  <hr class="divider">
-
-  <h2>Project Repos</h2>
-  <div id="projects" class="grid-cards">
-    <p style="color:var(--muted);">Loading…</p>
-  </div>
-
-  <hr class="divider">
-
-  <h2>Helpful Repos</h2>
-  <div id="helpful" class="grid-cards">
-    <p style="color:var(--muted);">Loading…</p>
-  </div>
-</div>
-
-<footer>
-  © 2025 The Jordan Lab · Florida State University<br>
-  <span style="font-size:.92rem;">Internal resource for lab members.
-    For external inquiries contact
-    <a href="mailto:jmjordan@fsu.edu">jmjordan@fsu.edu</a>.</span>
-</footer>
-
-<script>
-(async () => {
-  const org = 'the-jordan-lab';
-  const api =
-    `https://api.github.com/orgs/${org}/repos?per_page=100&type=public`;
-
-  /* curate here ↓ */
-  const GROUP = [
-    'protocols','onboarding','omics-dbs','library','guides','oligos',
-    'registries','templates','presentations',
-    'environmental_health_and_safety'
-  ];
-  const HELPFUL = [
-    'demo-repository','github-starter-course',
-    'jz003.1-rtqpcr-analysis','ybx1-conservation-analysis',
-    'ca018-orflo-analysis','jz003-rtqpcr-analysis',
-    'rtqpcr-ddct-analysis-template'
-  ];
-
-  const mkCard = ({ name, html_url, description }) => {
-    const d = document.createElement('div');
-    const proj = /^proj/i.test(name);
-    d.className = 'card' + (proj ? ' proj' : '');
-    d.innerHTML = `
-      <a class="card-title" href="${html_url}">
-        ${name.replace(/-/g,' ')}
-      </a>
-      <div class="card-desc">${description || '&nbsp;'}</div>`;
-    return d;
-  };
-
-  try {
-    const res = await fetch(api);
-    const repos = await res.json();
-    repos.sort((a,b) => a.name.localeCompare(b.name));
-
-    const out = {
-      group:   document.getElementById('group'),
-      projects:document.getElementById('projects'),
-      helpful: document.getElementById('helpful')
-    };
-    Object.values(out).forEach(el => (el.innerHTML = ''));
-
-    repos.forEach(r => {
-      const w = /^proj/i.test(r.name)      ? out.projects
-              : HELPFUL.includes(r.name)   ? out.helpful
-              : /* default */               out.group;
-      w.appendChild(mkCard(r));
-    });
-  } catch (e) {
-    console.error(e);
-    ['group','projects','helpful'].forEach(id => {
-      document.getElementById(id).innerHTML =
-        '<p style="color:#e06666;">Error loading repos.</p>';
-    });
-  }
-})();
-</script>
