@@ -1,5 +1,6 @@
 # The Jordan Lab at FSU
-Epigenetics, Metabolism, Computational/Systems Biology
+
+Applying advances in AI to long-standing problems in genomics and metabolism.
 
 ## Project repos
 Assigned:
