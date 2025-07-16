@@ -10,6 +10,7 @@ Assigned:
 -  [Proj004 ](https://github.com/the-jordan-lab/proj004-Ybx1-Cebpa-cBAF_in_MASLD) Epigenetic regulation of maladaptive processes by YBX1-C/EBPa-cBAF in MASLD
 -  [Proj005](https://github.com/the-jordan-lab/proj005-Cebpa-cBAF_in_WAT_maintenance) Exploring a C/EBPa-cBAF-Mir101 axis in WAT maintenance
 -  [Proj008](https://github.com/the-jordan-lab/proj008-Organismal_lipid_homeo_by_Ybx1) Organismal analysis of Ybx1
+  
 ---
 Unassigned:
 - [Proj006](https://github.com/the-jordan-lab/proj006-Hi-res_RNAseq_in_human_heps) High-resolution RNAseq time series in human hepatocyte model
